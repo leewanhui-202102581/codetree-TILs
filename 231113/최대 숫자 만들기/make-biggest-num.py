@@ -12,15 +12,30 @@ def compare(x, y):
     while i < len_x and j < len_y:
         if x[i] > y[j]: #x: 더 앞에 오는 수
             return -1
-        if y[i] > x[j]:
+        if y[j] > x[i]:
             return 1
         else:
             i += 1
             j += 1
-    if len_x < len_y:#x: 더 앞에 오는 수 : '4' vs '43'
-        return -1
-    elif  len_x > len_y:
-        return 1
+
+    while i < len_x: 
+        j = -1
+        if x[i] > y[j]: #x: 더 앞에 오는 수
+            return -1
+        if y[j] > x[i]:
+            return 1
+        else:
+            i += 1
+    
+    while j < len_y:
+        i = -1
+        if x[i] > y[j]: #x: 더 앞에 오는 수
+            return -1
+        if y[j] > x[i]:
+            return 1
+        else:
+            j += 1
+
     return 0 
 
 
