@@ -11,7 +11,7 @@ for _ in range(n):
 
 result = 0
 for b in B:
-    a = (b + 1) // (2 * n )#a는 최소 b보다 1 이상 큰 카드를 내야 함
+    a = (b + 1) % (2 * n )#a는 최소 b보다 1 이상 큰 카드를 내야 함
     #if b == 2 * n:
     #    a = 0
 
@@ -20,8 +20,9 @@ for b in B:
             break
         else:
             a += 1
-
+    
     if a == 2 * n + 1: #만약 A가 이길 수 없는 경우. 
+        print(b)
         a = 0
         while a <= 2 * n:
             if arr[a]:
@@ -31,7 +32,7 @@ for b in B:
 
     # 이 시점에서 A가 이번에 낼 카드가 정해짐
     arr[a] = False
-
+    #print(a, b)
     if a > b:
         result += 1
 
