@@ -22,7 +22,6 @@ for b in B:
             a += 1
     
     if a == 2 * n + 1: #만약 A가 이길 수 없는 경우. 
-        print(b)
         a = 0
         while a <= 2 * n:
             if arr[a]:
