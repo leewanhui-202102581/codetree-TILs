@@ -38,9 +38,12 @@ for k in range(1, n+1):
 cnt = 0
 min_sum = 0
 for a, b in queries:
-    if red[a][b]:
+    if dist[a][b] != INT_MAX and red[a][b]:
         cnt += 1
         min_sum += dist[a][b]
+
+
+
 
 print(cnt)
 print(min_sum)
