@@ -35,4 +35,5 @@ result = dist[a_start][end] + dist[b_start][end]
 for i in range(1, n + 1):
     result = min(result,  dist[a_start][i] + dist[b_start][i] + dist[i][end]) 
 
-print(result)
+
+print(result if result < INT_MAX else -1)
