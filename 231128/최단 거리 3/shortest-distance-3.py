@@ -4,7 +4,7 @@ INT_MAX = sys.maxsize
 
 n, m = tuple(map(int, input().split()))
 
-edges = set(tuple(map(int, input().split())) for _ in range(m))
+edges = [tuple(map(int, input().split())) for _ in range(m)]
 
 a, b = tuple(map(int, input().split()))
 
@@ -18,8 +18,13 @@ dist = [INT_MAX] * (n + 1)
 
 
 for x, y, z in edges: 
-    graph[y][x] = z   
-    graph[x][y] = z 
+    if graph[x][y] != 0:
+        graph[y][x] = min(graph[y][x], z)   
+        graph[x][y] = min(graph[x][y], z) 
+    else:
+        graph[y][x] = z   
+        graph[x][y] = z 
+
 
 
 dist[b] = 0 #도착점을 시작점으로
@@ -44,4 +49,4 @@ for i in range(1, n + 1):
             dist[j] = dist[min_index] + graph[min_index][j]
 
 
-print(dist[a])
+print(dist[a] )
