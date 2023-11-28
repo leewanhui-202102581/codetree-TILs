@@ -20,6 +20,7 @@ path = [0] * (n + 1)
 for i in range(m):
     x, y, z = edges[i] 
     graph[y][x] = z     #도착점을 시작점으로 
+    graph[x][y] = z     #도착점을 시작점으로 
 
 
 dist[b] = 0 #도착점을 시작점으로
