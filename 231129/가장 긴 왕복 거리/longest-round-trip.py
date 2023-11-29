@@ -1,7 +1,6 @@
-import sys
-input = sys.stdin.readline
-INT_MAX = sys.maxsize
+import math
 
+INT_MAX = math.inf
 # 변수 선언 및 입력:
 n, m, x = tuple(map(int, input().split()))
 
