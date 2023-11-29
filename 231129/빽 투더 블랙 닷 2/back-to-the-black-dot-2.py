@@ -1,4 +1,6 @@
 import sys
+import heapq
+
 
 
 INT_MAX = sys.maxsize
@@ -8,40 +10,40 @@ n, m = tuple(map(int, input().split()))
 
 red1, red2 = tuple(map(int, input().split()))
 
+graph = [[] for _ in range(n + 1)]
 edges = [tuple(map(int, input().split())) for _ in range(m)]
 
-graph = [
-    [0] * (n + 1)
-    for _ in range(n + 1)
-]
-
-for x, y, z in edges:
-    graph[y][x] = z  
-    graph[x][y] = z
+for i in range(m):
+    x, y, z = edges[i]
+    graph[x].append((y, z))
+    graph[y].append((x, z))
 
 
-def Dijkstra(end):
-    visited = [False] * (n + 1)
+
+
+def Dijkstra(k):#시작점
+    pq = []
     dist = [INT_MAX] * (n + 1)
 
-    dist[end] = 0 
+    dist[k] = 0
 
-    for i in range(1, n + 1):
-        min_index = -1
-        for j in range(1, n + 1):
-            if visited[j]:
-                continue
+    # (거리, 정점 번호) 형태로 넣어줘야 합니다.
+    heapq.heappush(pq, (0, k)) # 우선순위 큐에 시작점/ 거리에 가까운 곳이 먼저 나와야
 
-            if min_index == -1 or dist[min_index] > dist[j]:
-                min_index = j            
+    while pq:
+        min_dist, min_index = heapq.heappop(pq)
 
-        visited[min_index] = True
+        if min_dist != dist[min_index]:
+            continue
 
-        for j in range(1, n + 1):
-            if graph[min_index][j] == 0:
-                continue
-            if dist[j] > dist[min_index] + graph[min_index][j]:
-                dist[j] = dist[min_index] + graph[min_index][j]
+
+        for target_index, target_dist in graph[min_index]:
+            new_dist = dist[min_index] + target_dist
+            if dist[target_index] > new_dist:
+                dist[target_index] = new_dist
+                heapq.heappush(pq, (new_dist, target_index))
+
+
     return dist
 
 
