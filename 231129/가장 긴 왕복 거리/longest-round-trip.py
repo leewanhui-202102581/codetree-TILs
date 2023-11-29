@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 import math
 
 INT_MAX = math.inf
