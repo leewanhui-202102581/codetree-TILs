@@ -1,5 +1,5 @@
 import sys
-
+input = sys.stdin.readline
 INT_MAX = sys.maxsize
 
 # 변수 선언 및 입력:
