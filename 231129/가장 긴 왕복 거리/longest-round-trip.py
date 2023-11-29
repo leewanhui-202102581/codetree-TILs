@@ -1,3 +1,4 @@
+#통과 실패..
 import heapq
 import sys
 
@@ -16,7 +17,7 @@ for i in range(m):
     graph_reversed[y].append((x, z))
 
 
-def Dijkstra(k, graph):#시작점
+def Dijkstra(k, g):#시작점
     pq = []
     dist = [INT_MAX] * (n + 1)
 
@@ -32,7 +33,7 @@ def Dijkstra(k, graph):#시작점
             continue
 
 
-        for target_index, target_dist in graph[min_index]:
+        for target_index, target_dist in g[min_index]:
             new_dist = dist[min_index] + target_dist
             if dist[target_index] > new_dist:
                 dist[target_index] = new_dist
