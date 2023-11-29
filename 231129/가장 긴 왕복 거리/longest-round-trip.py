@@ -12,12 +12,12 @@ graph_reversed = [[] for _ in range(n + 1)]
 edges = [tuple(map(int, input().split())) for _ in range(m)]
 
 for i in range(m):
-    x, y, z = edges[i]
-    graph[x].append((y, z))
-    graph_reversed[y].append((x, z))
+    X, y, z = edges[i]
+    graph[X].append((y, z))
+    graph_reversed[y].append((X, z))
 
 
-def Dijkstra(k, g):#시작점
+def Dijkstra(k, graph):#시작점
     pq = []
     dist = [INT_MAX] * (n + 1)
 
@@ -33,9 +33,9 @@ def Dijkstra(k, g):#시작점
             continue
 
 
-        for target_index, target_dist in g[min_index]:
+        for target_index, target_dist in graph[min_index]:
             new_dist = dist[min_index] + target_dist
-            if dist[target_index] > new_dist:
+            if dist[target_index] >= new_dist:
                 dist[target_index] = new_dist
                 heapq.heappush(pq, (new_dist, target_index))
 
